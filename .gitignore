@@ -12,3 +12,5 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+Content/LandscapeMountains/Maps/LandscapeMap.umap
+Content/LandscapeMountains/Maps/LandscapeMap_BuiltData.uasset
