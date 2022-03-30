@@ -64,7 +64,12 @@ void ASurvivalCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
-	PerformInteractionCheck();
+	const bool bIsInteractingOnServer = (HasAuthority() && IsInteracting());
+
+	if (!HasAuthority() || bIsInteractingOnServer && GetWorld()->TimeSince(InteractionData.LastInteractionCheckTime) > InteractionCheckFrequency)
+	{
+		PerformInteractionCheck();
+	}
 }
 
 void ASurvivalCharacter::PerformInteractionCheck()
@@ -111,20 +116,110 @@ void ASurvivalCharacter::PerformInteractionCheck()
 
 void ASurvivalCharacter::CouldntFindInteractable()
 {
-	if (InteractionData.ViewedInteractionComponent)
+	if (GetWorldTimerManager().IsTimerActive(TimerHandle_Interact))
 	{
-		InteractionData.ViewedInteractionComponent->SetHiddenInGame(true);
-		// InteractionData.ViewedInteractionComponent = nullptr;
+		GetWorldTimerManager().ClearTimer(TimerHandle_Interact);
 	}
+
+	if (UInteractionComponent* Interactable = GetInteractable())
+	{
+		Interactable->EndFocus(this);
+		
+		if (InteractionData.bInteractHeld)
+		{
+			EndInteract();
+		}
+	}
+
+	InteractionData.ViewedInteractionComponent = nullptr;
 }
 
 void ASurvivalCharacter::FoundNewInteractable(UInteractionComponent* Interactable)
 {
-	if (Interactable)
+	EndInteract();
+	
+	if (UInteractionComponent* OldInteractable = GetInteractable())
 	{
-		Interactable->SetHiddenInGame(false);
-		InteractionData.ViewedInteractionComponent = Interactable;
+		OldInteractable->EndFocus(this);
 	}
+	InteractionData.ViewedInteractionComponent = Interactable;
+	Interactable->BeginFocus(this);
+}
+
+void ASurvivalCharacter::BeginInteract()
+{
+	// UE_LOG(LogTemp, Warning, TEXT("AAAAAAAAAAAAAA"));
+	if (!HasAuthority())
+	{
+		ServerBeginInteract();
+	}
+	InteractionData.bInteractHeld = true;
+
+	if (UInteractionComponent* Interactable = GetInteractable())
+	{
+		Interactable->BeginInteract(this);
+
+		if (FMath::IsNearlyZero(Interactable->InteractionTime))
+		{
+			Interact();
+		}
+		else
+		{
+			GetWorldTimerManager().SetTimer(TimerHandle_Interact, this, &ASurvivalCharacter::Interact, Interactable->InteractionTime, false);
+		}
+	}
+}
+
+void ASurvivalCharacter::EndInteract()
+{
+	if (!HasAuthority())
+	{
+		ServerEndInteract();
+	}
+	InteractionData.bInteractHeld = false;
+
+	GetWorldTimerManager().ClearTimer(TimerHandle_Interact);
+
+	if (UInteractionComponent* Interactable = GetInteractable())
+	{
+		Interactable->EndInteract(this);
+	}
+}
+
+void ASurvivalCharacter::Interact()
+{
+	UE_LOG(LogTemp, Warning, TEXT("AAAAAAAAAAAAAA"));
+	GetWorldTimerManager().ClearTimer(TimerHandle_Interact);
+
+	if (UInteractionComponent* Interactable = GetInteractable())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("VALID INTERACTABLE"));
+		Interactable->Interact(this);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Warning, TEXT("UVALID INTERACTABLE"));
+	}
+}
+
+void ASurvivalCharacter::ServerBeginInteract_Implementation()
+{
+	BeginInteract();
+}
+
+bool ASurvivalCharacter::ServerBeginInteract_Validate()
+{
+	return true;
+}
+
+void ASurvivalCharacter::ServerEndInteract_Implementation()
+{
+	EndInteract();
+}
+
+bool ASurvivalCharacter::ServerEndInteract_Validate()
+{
+	return true;
 }
 
 void ASurvivalCharacter::MoveForward(float Value)
@@ -158,6 +253,19 @@ void ASurvivalCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 
 	PlayerInputComponent->BindAction("Crouch", EInputEvent::IE_Pressed, this, &ASurvivalCharacter::StartCrouching);
 	PlayerInputComponent->BindAction("Crouch", EInputEvent::IE_Released, this, &ASurvivalCharacter::StopCrouching);
+
+	PlayerInputComponent->BindAction("Interact", EInputEvent::IE_Pressed, this, &ASurvivalCharacter::BeginInteract);
+	PlayerInputComponent->BindAction("Interact", EInputEvent::IE_Released, this, &ASurvivalCharacter::EndInteract);
+}
+
+bool ASurvivalCharacter::IsInteracting() const
+{
+	return GetWorldTimerManager().IsTimerActive(TimerHandle_Interact);
+}
+
+float ASurvivalCharacter::GetRemainingInteractTime() const
+{
+	return GetWorldTimerManager().GetTimerRemaining(TimerHandle_Interact);
 }
 
 void ASurvivalCharacter::StartCrouching()

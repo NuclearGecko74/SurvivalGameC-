@@ -9,35 +9,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3947590b-39b1-4f5f-aeb1-549b61771c5f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Animations/AnimBP_Character.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Animations/Blendspaces/BS_IdleWalkRun.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SurvivalPlayerController.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SurvivalPlayerState.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Framework/BP_SurvivalGameGameModeBase.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Framework/BP_SurvivalGameInstance.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/Framework/BP_SurvivalGameStateBase.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalGameInstance.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalGameStateBase.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalPlayerController.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalPlayerState.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalGameInstance.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalGameStateBase.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalPlayerController.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalPlayerState.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Lamp.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Widgets/InteractionWidget.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/SurvivalGame/Widgets/InteractionWidget.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SurvivalGame/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SurvivalGame/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Animations/UE4_Mannequin/Mesh/AnimStarterPackSkeleton_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animations/UE4_Mannequin/Mesh/AnimStarterPackSkeleton_Skeleton.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_SurvivalCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SurvivalCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Character/Materials/Eyes/Heroes/Kwang/Materials/MI_Kwang_EyeRefractive.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Character/Materials/Eyes/Heroes/Kwang/Materials/MI_Kwang_EyeRefractive.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Character/Meshes/SK_BaseBody_Head.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Character/Meshes/SK_BaseBody_Head.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/TestingLevel.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/TestingLevel.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Maps/TestingLevel_BuiltData.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/TestingLevel_BuiltData.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/UserInterface/Widgets/WBP_InteractionCard.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/UserInterface/Widgets/WBP_InteractionCard.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SurvivalGame/Components/InteractionComponent.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SurvivalGame/Private/SurvivalCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/SurvivalGame/Public/SurvivalCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SurvivalGame.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/SurvivalGame.uproject" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +29,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Source/SurvivalGame/Widgets/InteractionWidget.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/SurvivalGame/Widgets/InteractionWidget.cpp" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="26qzJIKX5GoN26Qgj5lZXmE9Gwq" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -284,7 +274,9 @@
       <workItem from="1648234932831" duration="2325000" />
       <workItem from="1648248419780" duration="3365000" />
       <workItem from="1648333036794" duration="5516000" />
-      <workItem from="1648373049897" duration="7722000" />
+      <workItem from="1648373049897" duration="16162000" />
+      <workItem from="1648520797291" duration="1918000" />
+      <workItem from="1648526039748" duration="12571000" />
     </task>
     <servers />
   </component>

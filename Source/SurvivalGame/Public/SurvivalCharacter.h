@@ -75,12 +75,28 @@ protected:
 	void BeginInteract();
 	void EndInteract();
 
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerBeginInteract();
+
+	UFUNCTION(Server, Reliable, WithValidation)
+	void ServerEndInteract();
+
 	void Interact();
 
 	UPROPERTY()
 	FInteractionData InteractionData;
 
 	FORCEINLINE UInteractionComponent* GetInteractable() const { return InteractionData.ViewedInteractionComponent; }
+
+	FTimerHandle TimerHandle_Interact;
+
+public:
+
+	bool IsInteracting() const;
+
+	float GetRemainingInteractTime() const;
+	
+protected:
 
 	void MoveForward(float Value);
 	void MoveRight(float Value);
